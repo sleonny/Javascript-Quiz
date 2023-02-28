@@ -1,0 +1,58 @@
+*{
+  
+   }
+
+@font-face {
+    font-family: 'Sean';
+    src: url('assets/fonts/Sean-Regular.ttf');
+  }
+  
+  body {
+    font-family: 'Sean', sans-serif
+  }
+
+ .landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    color: purple;
+ } 
+
+ .quiz-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: red;
+    color: navajowhite;
+    text-align: left;
+    padding: 50px;
+ }
+
+ .quiz-page h3,
+ .quiz-page h4 {
+    text-align: right;
+    margin: 50px;
+ }
+ 
+ .final-page {
+    background-color: gray;
+    color: greenyellow;
+ }
+
+ nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: yellow;
+ }
+
+ #left {
+    text-align: left;
+ }
+
+ #right {
+    text-align: right;
+ }
