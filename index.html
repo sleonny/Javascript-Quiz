@@ -20,7 +20,7 @@
                 time remaining.  Oh and for each wrong guess you get<br>
                 five seconds subracted from the timer.  Good Luck!<br>
             </p>
-            <button>Start</button>
+            <button id="startButton">Start</button>
         </section>
 
         <section class="quiz-page">
@@ -37,10 +37,10 @@
 
         <section class="final-page">
             <h1>Hey You're Done!  Great Job!</h1>
-            <h3>You Final Score Is</h3>
+            <h3>You Final Score Is: <span id="score"></span></h3>
             <h4>Please enter your name to save your high score FOREVER</h4>
-            <input name="">
-            <button>Submit</button>
+            <input type="text" id="name-input" name="">
+            <button id="submit-name">Submit</button>
             <h2>Well thanks so much for playing.  Javascript is super cool!</h2>
         </section>
 
@@ -56,5 +56,9 @@
         </section>
 
         </section>
+
+        <script type="text/javascript" src="assets/js/script.js">
+        </script>
+
     </body>
 </html>
