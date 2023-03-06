@@ -1,4 +1,7 @@
 *{
+ 
+  background-color: yellow;
+  color: black;
   
    }
 
@@ -8,7 +11,11 @@
   }
   
   body {
-    font-family: 'Sean', sans-serif
+    font-family: 'Sean', sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 10px solid black;
+    height: 100vh;
   }
 
  .landing-page {
@@ -16,18 +23,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
-    color: purple;
- } 
+  } 
 
  .quiz-page {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: red;
-    color: navajowhite;
     text-align: left;
     padding: 50px;
+    
  }
 
  .quiz-page h3,
@@ -43,8 +47,9 @@
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
-   background-color: gray;
-    color: greenyellow;
+   background-color: yellow;
+    color:black;
+    border: black;
  }
 
  
@@ -58,10 +63,12 @@
 
  #left {
     text-align: left;
+    border-radius: 8%;
  }
 
- #right {
+ #timer {
     text-align: right;
+    border-radius: 8%;
  }
 
  .high-scores {
@@ -69,5 +76,35 @@
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
-   background-color: slateblue;
- }
+  }
+
+  .start-button {
+   background-color: black;
+   color: yellow;
+     }
+   
+     li {
+      display: block;
+      margin-bottom: 10px;
+      border: 5px solid black;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: yellow;
+      color: black;
+      width: 600px;
+     text-align: center;
+    }
+       
+    li.correct {
+      border-color: green;
+    }
+    
+    li.incorrect {
+      border-color: red;
+    }
+    
+    
+    
+    
+    
+    
