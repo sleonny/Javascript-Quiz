@@ -42,19 +42,23 @@ startButton.addEventListener("click", function () {
 
 for (var i = 0; i < current.options.length; i++) {
   var option = current.options[i];
-  var radio = document.createElement("input");
-      radio.type = "radio";
-      radio.name = "answer";
-      radio.value = option;
+  //var radio = document.createElement("input");
+    //  radio.type = "radio";
+      //radio.name = "answer";
+      //radio.value = option;
       
       var label = document.createElement("label");
       label.textContent = option;
-      
-      var li = document.createElement("li");
-      li.appendChild(radio);
-      li.appendChild(label);
+    
+      console.log(option);
+      var button = document.createElement("button");
+      //li.appendChild(radio);
+      //li.appendChild(label);
+      button.setAttribute("value", option);
+      button.setAttribute("class", "button");
 
-      answers.appendChild(li);
+
+      answers.appendChild(button);
 
       radio.addEventListener("click", function() {
         radio.click();
