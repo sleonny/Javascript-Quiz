@@ -31,17 +31,15 @@
     justify-content: space-between;
     text-align: left;
     padding: 50px;
-    
- }
+   }
 
  .quiz-page h3,
- .quiz-page h4 {
+ #timer {
     text-align: right;
-    margin: 50px;
- }
+    margin: 30px;
+   }
 
 
- 
  .final-page {
    display: flex;
    flex-direction: column;
@@ -76,6 +74,7 @@
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
+
   }
 
   .start-button {

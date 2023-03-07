@@ -8,9 +8,6 @@ var userScore = document.querySelector(".score");
 var userNameInput = document.querySelector(".name-input");
 var highScores = document.querySelector(".high-scores");
 
-
-
-
 function initQuiz() {
   landingPage.style.display = "flex";
   quizPage.style.display = "none";
@@ -18,6 +15,12 @@ function initQuiz() {
   highScores.style.display = "none";
 }
 
+function showendPage() {
+  landingPage.style.display = "none";
+  quizPage.style.display = "none";
+  endPage.style.display = "flex";
+  highScores.style.display = "none";
+}
 
 window.onload = initQuiz;
 
@@ -28,17 +31,71 @@ let timerInterval;
 startButton.addEventListener("click", function () {
   landingPage.style.display = "none";
   quizPage.style.display = "block";
+  
+  function showQuestion() {
+    var questions = document.querySelector("h2");
+    var answers = document.querySelector("#answer-options");
+    var current = quizQuestions[currentQuestion];
+  
+    questions.textContent = current.question;   
+  answers.innerHTML = "";
+
+for (var i = 0; i < current.options.length; i++) {
+  var option = current.options[i];
+  var radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "answer";
+      radio.value = option;
+      
+      var label = document.createElement("label");
+      label.textContent = option;
+      
+      var li = document.createElement("li");
+      li.appendChild(radio);
+      li.appendChild(label);
+
+      answers.appendChild(li);
+
+      radio.addEventListener("click", function() {
+        radio.click();
+      });
+
+      li.addEventListener("click", function() {
+        if (this.value === current.options[current.correctOptionIndex]) {
+          li.classList.add("correct");
+        } else {
+          li.classList.add("incorrect");
+        }       
+    
+    for (var j = 0; j < answers.children.length; j++) {
+      answers.children[j].removeEventListener("click", arguments.callee);
+    }
+
+    currentQuestion++;
+    if (currentQuestion < quizQuestions.length) {
+      showQuestion();
+    } else {
+      showendPage();
+    }
+    });
+    
+  }
+  var totalQuestions = 25;
+  var questonCounter = document.getElementById("question-counter");
+  var curQues = currentQuestion + 1;
+  questonCounter.textContent = "Question " + curQues + " of " + totalQuestions;
+}
   showQuestion();
   timerInterval = setInterval(function() {
     timeLeft--;
-    timerElement.textContent = "Time left: " + timeLeft + " seconds";
+    timerElement.textContent = timeLeft + " Earth seconds remaining";
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
       endQuiz();
     }
   }, 1000);
 });
-
+var currentQuestion = 0;
 var quizQuestions = [
     {
       question: "Why is console.log important?",
@@ -156,62 +213,11 @@ var quizQuestions = [
       },
      ];
 
-     var currentQuestion = 0;
+    
 
 
 
-     function showQuestion() {
-        var questions = document.querySelector("h2");
-        var answers = document.querySelector("#answer-options");
-        var current = quizQuestions[currentQuestion];
-      questions.textContent = current.question;   
-      answers.innerHTML = "";
-
-    for (var i = 0; i < current.options.length; i++) {
-      var option = current.options[i];
-      var radio = document.createElement("input");
-          radio.type = "radio";
-          radio.name = "answer";
-          radio.value = option;
-          
-          var label = document.createElement("label");
-          label.textContent = option;
-          
-          var li = document.createElement("li");
-          li.appendChild(radio);
-          li.appendChild(label);
-
-          answers.appendChild(li);
-
-          li.addEventListener("click", function() {
-            radio.click();
-          });
-
-          radio.addEventListener("click", function() {
-            if (this.value === current.options[current.correctOptionIndex]) {
-              li.classList.add("correct");
-            } else {
-              li.classList.add("incorrect");
-            }       
-        
-        for (var j = 0; j < answers.children.length; j++) {
-          answers.children[j].removeEventListener("click", arguments.callee);
-        }
-
-        currentQuestion++;
-        if (currentQuestion < quizQuestions.length) {
-          showQuestion();
-        } else {
-          showendPage();
-        }
-        });
-        
-      }
-      var totalQuestions = 25;
-      var questonCounter = document.getElementById("question-counter");
-      var curQues = currentQuestion + 1;
-      questonCounter.textContent = "Question " + curQues + " of " + totalQuestions;
-    }
+     
      
     
   
