@@ -10,3 +10,5 @@ score you may enter your name to be stored and
 displayed on a high scores screen.
 
 ## Screenshot
+
+![127 0 0 1_5500_index html](https://user-images.githubusercontent.com/122305724/223310514-ae2d27ed-8866-4e87-8c0e-303babe6379d.png)
