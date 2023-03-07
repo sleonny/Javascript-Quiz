@@ -15,6 +15,8 @@ displayed on a high scores screen.
 
 ## Link
 
+https://sleonny.github.io/js-quiz/
+
 ## Technologies Used
 
 VS Code Editor
