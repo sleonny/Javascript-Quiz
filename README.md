@@ -18,8 +18,11 @@ displayed on a high scores screen.
 ## Technologies Used
 
 VS Code Editor
+
 Gitbash
+
 ChatGPT
+
 Google Search Engine
 
 ## Credit
