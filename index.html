@@ -1,77 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="assets/css/style.css" rel="stylesheet">
-    </head>
-    
-    <body>
-        <nav>
-          
-            <h4 id="left">High Scores</h4>
-            <h4 id="timer">You have this many seconds left &#8594; 250</h4>
-        </nav>
-        <section class="landing-page">
-            <h1>Welcome to the Javascript Coding Quiz!</h1>
-            <p class="intro">Click the start button and you get a timer starting<br>
-                with 250 seconds.  You have that long to get through <br>
-                25 multiple choice questions.  Your score will be the <br>
-                time remaining.  For each incorrect selection you will <br>
-                have 3 Earth seconds deducted from the timer.  Good Luck!<br>
-            </p>
-            <button class="start-button">Start</button>
-        </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Quiz</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <a id="highscore-link" href="#">High Scores</a>
+      <div id="timer">Time: 0</div>
+    </header>
 
-        <section class="quiz-page">
-                           <h3 id="question-counter"></h3>
+    <!-- Landing/Home Page -->
+    <section id="home-page" class="active-page">
+      <h1>Welcome to the JavaScript Quiz!</h1>
+      <p>An explanation of the quiz...</p>
+      <button id="start-btn">Start Quiz</button>
+    </section>
 
-                <h2 id="literal-question">question</h2>
-                     <ul id="answer-options">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                   </section>
+    <!-- Quiz Page -->
+    <section id="quiz-page">
+      <h1 id="question">Question will go here</h1>
+      <div id="choices">Choice buttons will go here</div>
+    </section>
 
-        <section class="final-page">
-            <h1>Hey You're Done!  Great Job!</h1>
-            <h3>You Final Score Is: <span class="score"></span></h3>
-            <h4>Please enter your name to save your high score FOREVER</h4>
-            <input type="text" class="name-input" name="">
-            <button class="submit-name">Submit</button>
-            <h2>Well thanks so much for playing.  Javascript is super cool!</h2>
-        </section>
+    <!-- Ending Page -->
+    <section id="end-page">
+      <h1>Your Final Score is:</h1>
+      <p id="score">Score will go here</p>
+      <a id="enter-score-link" href="#">Enter High Score</a>
+    </section>
 
-        <section id="highscoreId" class="high-scores">
-            <h1>High Scores</h1>
-                <ol>
-                    <li>player one</li>
-                    <li>player two</li>
-                    <li>player three</li>
-                    <li>player four</li>
-                    <li>player five</li>
-                </ol>
-        </section>
+    <!-- High Scores Page -->
+    <section id="highscores-page">
+      <h1>High Scores</h1>
+      <div id="highscores">High scores will be listed here</div>
+    </section>
 
-        </section>
-
-        <script type="text/javascript" src="TEST.js">
-        </script>
-
-    </body>
+    <!-- Link to JavaScript file -->
+    <script src="index.js"></script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

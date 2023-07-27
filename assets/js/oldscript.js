@@ -218,101 +218,92 @@ var quizQuestions = [
   },
 ];
 
-// Current question index
-var currentQuestionIndex = 0;
-// Time remaining for the quiz
-var time = quizQuestions.length * 15;
-// Timer interval id
-var timerId;
+var landingPage = document.querySelector(".landing-page");
+var quizPage = document.querySelector(".quiz-page");
+var endPage = document.querySelector(".final-page");
+var startButton = document.querySelector(".start-button");
+var submitName = document.querySelector(".submit-name");
+var userScore = document.querySelector(".score");
+var userNameInput = document.querySelector(".name-input");
+var highScores = document.querySelector(".high-scores");
 
-// Page elements
-var timerEl = document.getElementById("timer");
-var startBtn = document.getElementById("start-btn");
-var questionEl = document.getElementById("question");
-var choicesEl = document.getElementById("choices");
-var homePageEl = document.getElementById("home-page");
-var quizPageEl = document.getElementById("quiz-page");
-var endPageEl = document.getElementById("end-page");
-var scoreEl = document.getElementById("score");
+function initQuiz() {
+  landingPage.style.display = "flex";
+  quizPage.style.display = "none";
+  endPage.style.display = "none";
+  highScores.style.display = "none";
+}
 
-// Start quiz function
-function startQuiz() {
-  // Hide home page and show quiz page
-  homePageEl.classList.remove("active-page");
-  quizPageEl.classList.add("active-page");
+window.onload = initQuiz;
 
-  // Start timer
-  timerId = setInterval(function () {
-    time--;
-    timerEl.textContent = "Time: " + time;
+var timerElement = document.getElementById("timer");
+let timeLeft = 250;
+let timerInterval;
 
-    // Check if time has run out
-    if (time <= 0) {
+startButton.addEventListener("click", function () {
+  landingPage.style.display = "none";
+  quizPage.style.display = "block";
+  showQuestion();
+  timerInterval = setInterval(function () {
+    timeLeft--;
+    timerElement.textContent = "Time left: " + timeLeft + " seconds";
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
       endQuiz();
     }
   }, 1000);
+});
 
-  // Show the first question
-  showQuestion();
-}
+var currentQuestion = 0;
 
-// Show question function
 function showQuestion() {
-  // Get the current question object
-  var questionObject = quizQuestions[currentQuestionIndex];
+  var questions = document.querySelector("h2");
+  var answers = document.querySelector("#answer-options");
+  var current = quizQuestions[currentQuestion];
+  questions.textContent = current.question;
+  answers.innerHTML = "";
 
-  // Update the question element
-  questionEl.textContent = questionObject.question;
+  for (var i = 0; i < current.options.length; i++) {
+    var option = current.options[i];
+    var radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "answer";
+    radio.value = option;
 
-  // Clear any existing choices
-  choicesEl.innerHTML = "";
+    var label = document.createElement("label");
+    label.textContent = option;
 
-  // Create buttons for each choice
-  for (var i = 0; i < questionObject.options.length; i++) {
-    var choice = questionObject.options[i];
-    var choiceBtn = document.createElement("button");
-    choiceBtn.textContent = choice;
-    choiceBtn.value = choice;
-    choiceBtn.onclick = answerQuestion;
-    choicesEl.appendChild(choiceBtn);
+    var li = document.createElement("li");
+    li.appendChild(radio);
+    li.appendChild(label);
+
+    answers.appendChild(li);
+
+    li.addEventListener("click", function () {
+      radio.click();
+    });
+
+    radio.addEventListener("click", function () {
+      if (this.value === current.options[current.correctOptionIndex]) {
+        li.classList.add("correct");
+      } else {
+        li.classList.add("incorrect");
+      }
+
+      for (var j = 0; j < answers.children.length; j++) {
+        answers.children[j].removeEventListener("click", arguments.callee);
+      }
+
+      currentQuestion++;
+      if (currentQuestion < quizQuestions.length) {
+        showQuestion();
+      } else {
+        showendPage();
+      }
+    });
   }
+  var totalQuestions = 25;
+  var questonCounter = document.getElementById("question-counter");
+  var curQues = currentQuestion + 1;
+  questonCounter.textContent = "Question " + curQues + " of " + totalQuestions;
 }
-
-// Answer question function
-function answerQuestion(event) {
-  // Compare the chosen answer with the correct answer
-  if (event.target.value !== quizQuestions[currentQuestionIndex].answer) {
-    // Subtract time for incorrect answers
-    time -= 10;
-    if (time < 0) {
-      time = 0;
-    }
-    timerEl.textContent = "Time: " + time;
-  }
-
-  // Move to the next question
-  currentQuestionIndex++;
-
-  // Check if there are more questions
-  if (currentQuestionIndex < quizQuestions.length) {
-    showQuestion();
-  } else {
-    endQuiz();
-  }
-}
-
-// End quiz function
-function endQuiz() {
-  // Stop the timer
-  clearInterval(timerId);
-
-  // Show end page
-  quizPageEl.classList.remove("active-page");
-  endPageEl.classList.add("active-page");
-
-  // Show final score
-  scoreEl.textContent = time;
-}
-
-// Start the quiz when start button is clicked
-startBtn.onclick = startQuiz;
